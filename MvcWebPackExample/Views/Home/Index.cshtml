@@ -1,0 +1,24 @@
+@{
+ViewData["Title"] = "Home Page";
+}
+
+@section Scripts {
+<script src="~/dist/index.min.js" defer></script>
+}
+
+<div class="text-center">
+  <h1 class="display-4">Willkommen</h1>
+  <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div id="ts-example">
+  <br />
+  <button type="button" class="btn btn-primary btn-md" onClick="app.area1.buttons.TSButton()">
+    Click me
+  </button>
+</div>
+
+<div id="area2-example">
+  <br />
+  <button type="button" class="btn btn-primary btn-md" onClick="app.area2.TestAlert()">Test alert</button>
+</div>

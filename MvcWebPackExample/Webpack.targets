@@ -1,0 +1,41 @@
+<Project>
+  <Target Name="NpmInstall"
+          Condition=" '$(Configuration)' == 'Debug'"
+          BeforeTargets="Build"
+          Inputs="ClientApp/package-lock.json;ClientApp/package.json"
+          Outputs="ClientApp/node_modules/.package-lock.json"
+  >
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node-js is not installed" />
+    <Message Importance="high" Text="Restoring dependencies using npm. This may take a while" />
+    <Exec WorkingDirectory="$(MpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="NpmRunBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' " DependsOnTargets="NpmInstall">
+    <Exec WorkingDirectory="$(MpaRoot)" Command="npm run build -- --no-color" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <Exec WorkingDirectory="$(MpaRoot)" Command="npm ci" />
+    <Exec WorkingDirectory="$(MpaRoot)" Command="npm run prod -- --no-color" />
+
+    <ItemGroup>
+      <DistFiles Include="$(WWWRoot)dist/**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')"
+                             Exclude="@(ResolvedFileToPublush)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+
+  </Target>
+
+  <Target Name="NpmClean" BeforeTargets="Clean">
+    <RemoveDir Directories="$(WWWRoot)dist" />
+    <RemoveDir Directories="$(MpaRoot)node_modules" />
+  </Target>
+</Project>

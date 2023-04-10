@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Dotnet Watch" type="RunDotNetWatch" factoryName="RunDotNetWatch">
+    <option name="exePath" value="$PROJECT_DIR$/MvcWebPackExample/bin/Debug/net7.0/MvcWebPackExample" />
+    <option name="programParameters" value="" />
+    <option name="projectFilePath" value="$PROJECT_DIR$/MvcWebPackExample/MvcWebPackExample.csproj" />
+    <option name="projectTfm" value="net7.0" />
+    <option name="restartOnRudeEditEditor" value="true" />
+    <option name="workingDirectory" value="$PROJECT_DIR$/MvcWebPackExample" />
+    <method v="2" />
+  </configuration>
+</component>

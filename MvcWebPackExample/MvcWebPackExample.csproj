@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <MpaRoot>ClientApp/</MpaRoot>
+    <WWWRoot>wwwroot/</WWWRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(MpaRoot)node_modules/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="7.0.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <!-- Don't publish the MPA source files but show them in the IDE -->
+    <Content Remove="$(MpaRoot)**" />
+    <None Remove="$(MpaRoot)**" />
+    <None Include="$(MpaRoot)**" Exclude="$(MpaRoot)node_modules/**" />
+  </ItemGroup>
+
+  <Import Project="Webpack.targets" />
+</Project>

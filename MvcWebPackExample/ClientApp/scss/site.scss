@@ -1,0 +1,48 @@
+@use "_colors.scss";
+
+a
+{
+  color: colors.$link-color;
+
+  &.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+  }
+}
+
+.btn-primary {
+  color: colors.$on-primary;
+  background-color: colors.$primary;
+  border-color: colors.$primary-border;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: colors.$on-primary;
+  background-color: colors.$primary;
+  border-color: colors.$primary-border;
+}
+
+.border-top {
+  border-top: 1px solid colors.$border-color;
+}
+.border-bottom {
+  border-bottom: 1px solid colors.$border-color;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem colors.$shadow-color;
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
